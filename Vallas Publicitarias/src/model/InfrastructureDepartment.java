@@ -16,6 +16,7 @@ public class InfrastructureDepartment {
     
     private ArrayList<Billboard> billboards;
     private final String FILE_NAME = "\\BillboardDataExported.csv";
+    private final String PATH = "C:\\Users\\Compumax\\Desktop\\Vallas Publicitarias\\data";
 
     public InfrastructureDepartment(){
         billboards = new ArrayList<>();
@@ -31,7 +32,7 @@ public class InfrastructureDepartment {
     }
 
     public void importData() throws IOException{
-        File file = new File("C:\\Users\\Compumax\\Desktop\\Vallas Publicitarias\\Vallas Publicitarias\\data"+FILE_NAME);
+        File file = new File(PATH+FILE_NAME);
 
         
         BufferedReader lector = new BufferedReader(
@@ -62,7 +63,7 @@ public class InfrastructureDepartment {
     public void writeNEWCsv(String info) throws IOException{
         String[] input = info.split("\\++");
 
-        File file = new File("C:\\Users\\Compumax\\Desktop\\Vallas Publicitarias\\Vallas Publicitarias\\data\\Nuevo.csv");
+        File file = new File(PATH+"\\Nuevo.csv");
 
         file.createNewFile();
 
@@ -78,7 +79,7 @@ public class InfrastructureDepartment {
     public void writeCsv(String info) throws IOException{
         String[] input = info.split("\\++");
 
-        File file = new File("C:\\Users\\Compumax\\Desktop\\Vallas Publicitarias\\Vallas Publicitarias\\data"+FILE_NAME);
+        File file = new File(PATH+FILE_NAME);
 
         FileWriter writer = new FileWriter(file,true);
 
@@ -89,7 +90,7 @@ public class InfrastructureDepartment {
     }
 
     public void serializable() throws IOException {
-        File file = new File("C:\\Users\\Compumax\\Desktop\\Vallas Publicitarias\\Vallas Publicitarias\\data\\file.bd");
+        File file = new File(PATH+"\\file.bd");
         ObjectOutputStream escritor = new ObjectOutputStream(
             new FileOutputStream(file));
         
@@ -101,7 +102,7 @@ public class InfrastructureDepartment {
         ObjectInputStream entrada =
             new ObjectInputStream(
                 new FileInputStream(
-                    new File("C:\\Users\\Compumax\\Desktop\\Vallas Publicitarias\\Vallas Publicitarias\\data\\file.bd")));
+                    new File(PATH+"\\file.bd")));
 
         billboards = (ArrayList<Billboard>)entrada.readObject();
     }
